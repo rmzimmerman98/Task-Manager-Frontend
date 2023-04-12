@@ -13,7 +13,7 @@ const getTask = () =>{
   (err)=>console.log(err)).catch((err) => console.log(err))
 }
 
-  const handleCreate = (addPerson) => {
+  const handleCreate = (addTask) => {
     axios.post('http://localhost:8000/task', addTask)
       .then((response) => {
         console.log(response)
