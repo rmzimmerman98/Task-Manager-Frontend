@@ -2,12 +2,15 @@ import { useState, useEffect  } from 'react'
 import axios from 'axios'
 import Add from './components/Add'
 import Edit from './components/Edit'
+import './App.css'
+import ReactModal from 'react-modal'
 
 const App = () => {
 
   let [tasks, setTasks] = useState([])
+  // const [showAddModal, setShowAddModal] = useState(false)
 
-const getTasks = () =>{ 
+const getTasks = () => { 
   axios.get('http://127.0.0.1:8000/api/task')
   .then(
     (response) => setTasks(response.data), 
@@ -40,24 +43,27 @@ const handleCreate = (addTask) => {
       })
   }
       
-useEffect(() =>{
+useEffect(() => {
   getTasks()
 }, [])
 
   return (
     <>
-      <div className='container'>
-        <h1 className='app-header'>Time Box</h1>
+      <div className='container mb-3'>
+        <h1 className='text-center'>Time Box</h1>
         <Add handleCreate={handleCreate} />
+        {/* <button className="btn btn-secondary btn-lg" onClick={() => setShowAddModal(true)}>Add</button> */}
         {tasks.map((task) => {
           return (
-            <div className='task' key={task.id}>
-              <h3>Task: {task.name}</h3>
-              <h4>Notes: {task.notes}</h4>
-              <h4>Time to Complete: {task.time} minutes</h4>
-              <h4>Priority: {task.priority}</h4>
-              <Edit tasks={tasks} handleUpdate={handleUpdate} />
-              <button onClick={handleDelete} value={task.id}>Delete</button>
+            <div className='card mb-3' key={task.id}>
+              <Edit handleUpdate={handleUpdate} task={task}/>
+                <h4 className='card-header'>{task.name}</h4>
+                <div className='card-body'>
+                  <h5 className=''>{task.time_to_complete} minutes to complete</h5>
+                  <h6 className=''>Notes: {task.notes}</h6>
+                  <h5 className=''>Priority: { task.priority }</h5>
+                <button className="btn btn-danger" onClick={handleDelete} value={task.id}>Delete</button>
+              </div>
             </div>
           )
         })}
