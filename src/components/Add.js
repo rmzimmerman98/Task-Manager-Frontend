@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const Add = (props) => {
     let emptyTask = { name: '', notes: '', time_to_complete: '', priority: 'DO' }
@@ -16,12 +16,11 @@ const Add = (props) => {
 
     return (
         <>
-        <div className='mb-3'>
-            <div className="add-form">
-                <h2 className='app-header'>Add Task</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="row g-3">
-                    <div className="col-md-6">
+        <div className='pb-3'>
+            <h2 className='app-header'>Add Task</h2>
+            <form onSubmit={handleSubmit}>
+                <div className="row">
+                    <div className="col-md-7">
                         <label className="form-label" htmlFor="name">Task</label>
                         <input className="form-control" type="text" name="name" required value={task.name} onChange={handleChange}/>
                     </div>
@@ -30,36 +29,37 @@ const Add = (props) => {
                         <input className="form-control" name="time_to_complete" required type="number" id="timeInput" step="5" min="0" value={task.time_to_complete} onChange={handleChange}/>
                     </div>
                     <div className="col-md-4">
-                    <fieldset className="row">
-                        <legend className="col-form-label col-sm-2 pt-0">Priority</legend>
-                        <div class="col-sm-10">
-                            <div className="form-check">
-                                <input className="form-check-input" type="radio" id="priority_urgent" name="priority" value="URGENT" onChange={handleChange}/>
-                                <label className="form-check-label" htmlFor="priority_urgent">Urgent</label>
+                        <fieldset className="row g-3">
+                            <legend className="col-form-label col-sm-2 pt-0">Priority:</legend>
+                            <div class="col-sm-10">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" id="priority_urgent" name="priority" value="URGENT" onChange={handleChange}/>
+                                    <label className="form-check-label" htmlFor="priority_urgent">Urgent</label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" id="priority_do" name="priority" value="DO" checked onChange={handleChange} />
+                                    <label className="form-check-label" htmlFor="priority_do">Do</label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" id="priority_defer" name="priority" value="DEFER" onChange={handleChange}/>
+                                    <label className="form-check-label" htmlFor="priority_defer">Defer</label>   
+                                </div>
                             </div>
-                            <div className="form-check">
-                                <input className="form-check-input" type="radio" id="priority_do" name="priority" value="DO" checked onChange={handleChange} />
-                                <label className="form-check-label" htmlFor="priority_do">Do</label>
-                            </div>
-                            <div className="form-check">
-                                <input className="form-check-input" type="radio" id="priority_defer" name="priority" value="DEFER" onChange={handleChange}/>
-                                <label className="form-check-label" htmlFor="priority_defer">Defer</label>   
-                            </div>
+                        </fieldset>
+                    </div>
                         </div>
-                    </fieldset>
-                    </div>
-                    <div className="col-12  mb-3">
-                        <label className="form-label" htmlFor="notes">Notes</label>
-                        <textarea className="form-control" type="text" rows="3" name="notes" value={task.notes} onChange={handleChange}/>
-                    </div>
-                    </div>
-                    <input
-                    className="btn btn-primary"
-                    type="submit"
-                    value="Submit"/>
-                </form>
-            </div>    
-        </div>
+                            <div className="col-12  mb-3">
+                                <label className="form-label" htmlFor="notes">Notes</label>
+                                <textarea className="form-control" type="text" rows="3" name="notes" value={task.notes} onChange={handleChange}/>
+                            </div>
+                        <div className="text-center ml-3">
+                            <input
+                            className="btn btn-primary"
+                            type="submit"
+                            value="Submit"/>
+                        </div>
+            </form>
+        </div> 
         </>
     )
 }

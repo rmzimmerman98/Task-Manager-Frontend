@@ -1,7 +1,10 @@
 body {
   background-image: url("https://wallpaperaccess.com/full/938610.jpg");
-  color: whitesmoke;
+  color: white;
 }
 .card {
+  color: black;
+}
+.modal {
   color: black;
 }

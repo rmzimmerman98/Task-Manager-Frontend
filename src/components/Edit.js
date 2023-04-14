@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Modal from 'react-bootstrap/Modal';
 
 const Edit = (props) => {
   
@@ -10,7 +11,7 @@ const Edit = (props) => {
   const handleShow = () => setShow(true)
 
   const handleChange = (event) => {
-    setTask({ ...task, [event.target.name]: event.target.value })
+    setTask({ ...task, [event.target.name]: event.target.checked })
   }
   
   const handleSubmit = (event) => {
@@ -18,20 +19,18 @@ const Edit = (props) => {
     props.handleUpdate(task)
   }
 
-
   return (
     <>
-      <div className='modal' show={show} onHide={handleClose}>
+      <div className='p-3'>
       <button className='btn btn-secondary' onClick={handleShow}>Edit</button>
       </div>
-        
-          <div className='modal-header' closeButton>
-            <div className='modal-title'>Edit Task</div>
-          </div>
-
+      <Modal className='modal' show={show} onHide={handleClose}> 
+        <div className='modal-header' closeButton>
+          <h3 className='align-center text modal-title'>Edit Task</h3>
+        </div>
         <div className='modal-body'>
-          <form className='mb-3 align-center text' onSubmit={handleSubmit}>
-            <div className="col-md-8">
+          <form className='mb-3' onSubmit={handleSubmit}>
+            <div className="col-md-10">
               <label className="form-label" htmlFor="name">Task</label>
               <input className="form-control" type="text" name="name" required value={task.name} onChange={handleChange}/>
             </div>
@@ -39,11 +38,7 @@ const Edit = (props) => {
               <label className="form-label" htmlFor="time_to_complete">Estimated Time To Complete</label>
               <input className="form-control" name="time_to_complete" required type="number" id="timeInput" step="5" min="0" value={task.time_to_complete} onChange={handleChange}/>
             </div>
-            <div className="col-10  mb-3">
-              <label className="form-label" htmlFor="notes">Notes</label>
-              <textarea className="form-control" type="text" rows="3" name="notes" value={task.notes} onChange={handleChange}/>
-            </div>
-              <fieldset className="row mb-3">
+            <fieldset className="row mb-3">
               <legend className="col-form-label col-sm-2 pt-0">Priority</legend>
                 <div class="col-sm-10">
                   <div className="form-check">
@@ -60,7 +55,12 @@ const Edit = (props) => {
                   </div>
                 </div>
               </fieldset>
-              <div className='mb-3 modal-footer'>
+            <div className="col-10  mb-3">
+              <label className="form-label" htmlFor="notes">Notes</label>
+              <textarea className="form-control" type="text" rows="3" name="notes" value={task.notes} onChange={handleChange}/>
+            </div>
+              
+              <div className='modal-footer'>
                 <button className='btn btn-secondary' onClick={handleClose}>Close</button>
                 <input
                 className="btn btn-primary"
@@ -69,9 +69,12 @@ const Edit = (props) => {
               </div>
           </form>    
         </div>
-     
+      </Modal>
     </>
   )
 }
+
+
+
 
 export default Edit

@@ -42,6 +42,19 @@ const handleCreate = (addTask) => {
         getTasks()
       })
   }
+
+const priorityColor = (priority) => {
+  switch (priority) {
+    case 'UR':
+      return 'border-danger'
+    case 'DO':
+      return 'border-success'
+    case 'DF':
+      return 'border-warning' 
+    default:
+      return 'border-success'
+  }
+}
       
 useEffect(() => {
   getTasks()
@@ -49,20 +62,22 @@ useEffect(() => {
 
   return (
     <>
-      <div className='container mb-3'>
-        <h1 className='text-center'>Time Box</h1>
+      <div className='container p-3'>
+        <h1 className='text-center mt-3'>Time Box</h1>
         <Add handleCreate={handleCreate} />
         {/* <button className="btn btn-secondary btn-lg" onClick={() => setShowAddModal(true)}>Add</button> */}
         {tasks.map((task) => {
           return (
-            <div className='text card mb-3' key={task.id}>
+            <div className={`card bg-light mb-3 ${priorityColor(task.priority)}`} key={task.id}>
               <Edit handleUpdate={handleUpdate} task={task}/>
                 <h4 className='card-header'>{task.name}</h4>
                 <div className='card-body'>
                   <h5 className=''>{task.time_to_complete} minutes to complete</h5>
-                  <p className=''>Notes: {task.notes}</p>
+                  <h5 className=''>Notes: {task.notes}</h5>
                   <h5 className=''>Priority: { task.priority }</h5>
-                <button className="btn btn-danger" onClick={handleDelete} value={task.id}>Delete</button>
+                  <div className='footer'>
+                  <button className="btn btn-danger" onClick={handleDelete} value={task.id}>Delete</button>
+                  </div>
               </div>
             </div>
           )
