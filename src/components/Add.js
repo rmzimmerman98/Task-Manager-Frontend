@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const Add = (props) => {
-    let emptyTask = { name: '', notes: '', time_to_complete: '', priority: '' }
+    let emptyTask = { name: '', notes: '', time: '', priority: '' }
     const [task, setTask] = useState(emptyTask)
 
     const handleChange = (event) => {
@@ -10,6 +10,7 @@ const Add = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         props.handleCreate(task)
+        setTask(emptyTask)
     }
 
     return (
@@ -39,15 +40,15 @@ const Add = (props) => {
                     <div className="mb-3">
                         <div className="form-check">
                             <input className="form-check-input" type="radio" id="priority_urgent" name="priority" value="UR" onChange={handleChange}/>
-                            <label className="form-check-label" for="priority_urgent">Urgent</label>
+                            <label className="form-check-label" htmlFor="priority_urgent">Urgent</label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" id="priority_do" name="priority" value="DO" checked onChange={handleChange} />
-                            <label className="form-check-label" for="priority_do">Do</label>
+                            <input className="form-check-input" type="radio" id="priority_do" name="priority" value="DO" onChange={handleChange} />
+                            <label className="form-check-label" htmlFor="priority_do">Do</label>
                         </div>
                         <div className="form-check">
                             <input className="form-check-input" type="radio" id="priority_defer" name="priority" value="DF" onChange={handleChange}/>
-                            <label className="form-check-label" for="priority_defer">Defer</label>   
+                            <label className="form-check-label" htmlFor="priority_defer">Defer</label>   
                         </div>
                     </div>
                     <input

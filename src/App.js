@@ -8,7 +8,7 @@ const App = () => {
   let [tasks, setTasks] = useState([])
 
 const getTasks = () =>{ 
-  axios.get('http://127.0.0.1:8000/api/tasks')
+  axios.get('http://127.0.0.1:8000/api/task')
   .then(
     (response) => setTasks(response.data), 
     (err)=>console.log(err)
@@ -17,7 +17,8 @@ const getTasks = () =>{
 }
 
 const handleCreate = (addTask) => {
-  axios.post('http://127.0.0.1:8000/api/tasks', addTask)
+  axios
+  .post('http://127.0.0.1:8000/api/task', addTask)
     .then((response) => {
       console.log(response)
       getTasks()
@@ -33,7 +34,7 @@ const handleCreate = (addTask) => {
 
   const handleUpdate = (editTask) => {
     console.log(editTask)
-    axios.put('http://127.0.0.1:8000/api/tasks/' + editTask.id, editTask)
+    axios.put('http://127.0.0.1:8000/api/task/' + editTask.id, editTask)
       .then((response) => {
         getTasks()
       })
@@ -50,7 +51,11 @@ useEffect(() =>{
         <Add handleCreate={handleCreate} />
         {tasks.map((task) => {
           return (
-            <div className='' key={task.id}>
+            <div className='task' key={task.id}>
+              <h3>Task: {task.name}</h3>
+              <h4>Notes: {task.notes}</h4>
+              <h4>Time to Complete: {task.time} minutes</h4>
+              <h4>Priority: {task.priority}</h4>
               <Edit tasks={tasks} handleUpdate={handleUpdate} />
               <button onClick={handleDelete} value={task.id}>Delete</button>
             </div>

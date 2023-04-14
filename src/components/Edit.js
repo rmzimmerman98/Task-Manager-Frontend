@@ -40,15 +40,15 @@ const Edit = (props) => {
                     <div className="mb-3">
                         <div className="form-check">
                             <input className="form-check-input" type="radio" id="priority_urgent" name="priority" value="UR" checked={task.priority === 'UR'} onChange={handleChange}/>
-                            <label className="form-check-label" for="priority_urgent">Urgent</label>
+                            <label className="form-check-label" htmlFor="priority_urgent">Urgent</label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" id="priority_do" name="priority" value="DO" checked={task.priority === 'DO'} onChange={handleChange} defaultChecked={task.priority === 'DO'}/>
-                            <label className="form-check-label" for="priority_do">Do</label>
+                            <input className="form-check-input" type="radio" id="priority_do" name="priority" value="DO" onChange={handleChange}/>
+                            <label className="form-check-label" htmlFor="priority_do">Do</label>
                         </div>
                         <div className="form-check">
                             <input className="form-check-input" type="radio" id="priority_defer" name="priority" value="DF" checked={task.priority === 'DF'} onChange={handleChange}/>
-                            <label className="form-check-label" for="priority_defer">Defer</label>   
+                            <label className="form-check-label" htmlFor="priority_defer">Defer</label>   
                         </div>
                     </div>
                     <input
