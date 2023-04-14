@@ -66,7 +66,6 @@ useEffect(() => {
       <div className='container p-3'>
         <h1 className='text-center mt-3'>Time Box</h1>
         <Add handleCreate={handleCreate} />
-        {/* <button className="btn btn-secondary btn-lg" onClick={() => setShowAddModal(true)}>Add</button> */}
         {tasks.map((task) => {
           return (
             <div className={`card bg-light mb-3 ${priorityColor(task.priority)}`} key={task.id}>
