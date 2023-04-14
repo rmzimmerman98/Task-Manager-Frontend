@@ -19,7 +19,8 @@ const Add = (props) => {
         <div className='mb-3'>
             <div className="add-form">
                 <h2 className='app-header'>Add Task</h2>
-                <form className="row g-3" onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
+                    <div className="row g-3">
                     <div className="col-md-6">
                         <label className="form-label" htmlFor="name">Task</label>
                         <input className="form-control" type="text" name="name" required value={task.name} onChange={handleChange}/>
@@ -51,11 +52,12 @@ const Add = (props) => {
                         <label className="form-label" htmlFor="notes">Notes</label>
                         <textarea className="form-control" type="text" rows="3" name="notes" value={task.notes} onChange={handleChange}/>
                     </div>
-                </form>
-                <input
+                    </div>
+                    <input
                     className="btn btn-primary"
                     type="submit"
                     value="Submit"/>
+                </form>
             </div>    
         </div>
         </>

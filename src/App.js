@@ -9,6 +9,7 @@ const App = () => {
 
   let [tasks, setTasks] = useState([])
   // const [showAddModal, setShowAddModal] = useState(false)
+  
 
 const getTasks = () => { 
   axios.get('http://127.0.0.1:8000/api/tasks')
