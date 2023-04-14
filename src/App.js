@@ -3,7 +3,7 @@ import axios from 'axios'
 import Add from './components/Add'
 import Edit from './components/Edit'
 import './App.css'
-import ReactModal from 'react-modal'
+// import ReactModal from 'react-modal'
 
 const App = () => {
 
@@ -54,12 +54,12 @@ useEffect(() => {
         {/* <button className="btn btn-secondary btn-lg" onClick={() => setShowAddModal(true)}>Add</button> */}
         {tasks.map((task) => {
           return (
-            <div className='card mb-3' key={task.id}>
+            <div className='text card mb-3' key={task.id}>
               <Edit handleUpdate={handleUpdate} task={task}/>
                 <h4 className='card-header'>{task.name}</h4>
                 <div className='card-body'>
                   <h5 className=''>{task.time_to_complete} minutes to complete</h5>
-                  <h6 className=''>Notes: {task.notes}</h6>
+                  <p className=''>Notes: {task.notes}</p>
                   <h5 className=''>Priority: { task.priority }</h5>
                 <button className="btn btn-danger" onClick={handleDelete} value={task.id}>Delete</button>
               </div>
