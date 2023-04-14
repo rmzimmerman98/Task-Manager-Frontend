@@ -2,9 +2,6 @@ body {
   background-image: url("https://wallpaperaccess.com/full/938610.jpg");
   color: white;
 }
-.card {
-  color: black;
-}
-.modal {
+.card, .modal {
   color: black;
 }

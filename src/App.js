@@ -3,7 +3,6 @@ import axios from 'axios'
 import Add from './components/Add'
 import Edit from './components/Edit'
 import './App.css'
-// import ReactModal from 'react-modal'
 
 const App = () => {
 
@@ -31,6 +30,7 @@ const handleCreate = (addTask) => {
   const handleDelete = (event) => {
     axios.delete('http://127.0.0.1:8000/api/tasks/' + event.target.value)
       .then((response) => {
+        console.log(response)
         getTasks()
       })
   }
@@ -39,17 +39,18 @@ const handleCreate = (addTask) => {
     console.log(editTask)
     axios.put('http://127.0.0.1:8000/api/tasks/' + editTask.id, editTask)
       .then((response) => {
+        console.log(response)
         getTasks()
       })
   }
 
 const priorityColor = (priority) => {
   switch (priority) {
-    case 'UR':
+    case 'URGENT':
       return 'border-danger'
     case 'DO':
       return 'border-success'
-    case 'DF':
+    case 'DEFER':
       return 'border-warning' 
     default:
       return 'border-success'
@@ -72,9 +73,9 @@ useEffect(() => {
               <Edit handleUpdate={handleUpdate} task={task}/>
                 <h4 className='card-header'>{task.name}</h4>
                 <div className='card-body'>
+                  <h5 className=''>Priority: { task.priority }</h5>
                   <h5 className=''>{task.time_to_complete} minutes to complete</h5>
                   <h5 className=''>Notes: {task.notes}</h5>
-                  <h5 className=''>Priority: { task.priority }</h5>
                   <div className='footer'>
                   <button className="btn btn-danger" onClick={handleDelete} value={task.id}>Delete</button>
                   </div>

@@ -11,7 +11,7 @@ const Edit = (props) => {
   const handleShow = () => setShow(true)
 
   const handleChange = (event) => {
-    setTask({ ...task, [event.target.name]: event.target.checked })
+    setTask({ ...task, [event.target.name]: event.target.value })
   }
   
   const handleSubmit = (event) => {
@@ -30,43 +30,63 @@ const Edit = (props) => {
         </div>
         <div className='modal-body'>
           <form className='mb-3' onSubmit={handleSubmit}>
-            <div className="col-md-10">
+            <div className="col-md-12 mb-3">
               <label className="form-label" htmlFor="name">Task</label>
               <input className="form-control" type="text" name="name" required value={task.name} onChange={handleChange}/>
             </div>
-            <div className="col-md-2">
+            <div className='row'>
+            <div className="col-md-2 mb-3">
               <label className="form-label" htmlFor="time_to_complete">Estimated Time To Complete</label>
               <input className="form-control" name="time_to_complete" required type="number" id="timeInput" step="5" min="0" value={task.time_to_complete} onChange={handleChange}/>
             </div>
-            <fieldset className="row mb-3">
+            <fieldset className="mb-3">
               <legend className="col-form-label col-sm-2 pt-0">Priority</legend>
                 <div class="col-sm-10">
                   <div className="form-check">
-                    <input className="form-check-input" type="radio" id="priority_urgent" name="priority" value="UR" onChange={handleChange}/>
-                    <label className="form-check-label" htmlFor="priority_urgent">Urgent</label>
+                    <input 
+                    className="form-check-input" 
+                    type="radio" id="priority_urgent" 
+                    name="priority" 
+                    value="URGENT"
+                    onChange={handleChange} 
+                    checked={task.priority === "URGENT"}  />
+                    <label className="form-check-label" htmlFor="priority_urgent" >Urgent</label>
                   </div>
                   <div className="form-check">
-                    <input className="form-check-input" type="radio" id="priority_do" name="priority" value="DO" checked onChange={handleChange} />
+                    <input 
+                    className="form-check-input" 
+                    type="radio" id="priority_do" 
+                    name="priority" 
+                    value="DO"
+                    onChange={handleChange} 
+                    checked={task.priority === "DO"}  />
                     <label className="form-check-label" htmlFor="priority_do">Do</label>
                   </div>
                   <div className="form-check">
-                    <input className="form-check-input" type="radio" id="priority_defer" name="priority" value="DF" onChange={handleChange}/>
-                    <label className="form-check-label" htmlFor="priority_defer">Defer</label>   
+                    <input 
+                    className="form-check-input" 
+                    type="radio" id="priority_defer" 
+                    name="priority" 
+                    value="DEFER" 
+                    onChange={handleChange} 
+                    checked={task.priority === "DEFER"}  />
+                    <label className="form-check-label" htmlFor="priority_defer" >Defer</label>   
                   </div>
                 </div>
               </fieldset>
-            <div className="col-10  mb-3">
+              </div>
+            <div className="col-12 mb-3">
               <label className="form-label" htmlFor="notes">Notes</label>
               <textarea className="form-control" type="text" rows="3" name="notes" value={task.notes} onChange={handleChange}/>
-            </div>
-              
-              <div className='modal-footer'>
+            </div> 
+            <div className='modal-footer'>
                 <button className='btn btn-secondary' onClick={handleClose}>Close</button>
                 <input
                 className="btn btn-primary"
                 type="submit"
-                value="Update"/>
-              </div>
+                value="Update"
+                onClick={handleClose}/>
+            </div>
           </form>    
         </div>
       </Modal>
