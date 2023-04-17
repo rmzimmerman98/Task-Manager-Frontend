@@ -9,7 +9,7 @@ const App = () => {
   let [tasks, setTasks] = useState([])
 
 const getTasks = () => { 
-  axios.get('http://127.0.0.1:8000/api/tasks')
+  axios.get('https://radiant-hollows-59694.herokuapp.com/api/tasks')
   .then(
     (response) => setTasks(response.data), 
     (err)=>console.log(err)
@@ -18,7 +18,7 @@ const getTasks = () => {
 }
 
 const handleCreate = (addTask) => {
-  axios.post('http://127.0.0.1:8000/api/tasks', addTask)
+  axios.post('https://radiant-hollows-59694.herokuapp.com/api/tasks', addTask)
     .then((response) => {
       console.log(response)
       getTasks()
@@ -26,7 +26,7 @@ const handleCreate = (addTask) => {
   }
 
   const handleDelete = (event) => {
-    axios.delete('http://127.0.0.1:8000/api/tasks/' + event.target.value)
+    axios.delete('https://radiant-hollows-59694.herokuapp.com/api/tasks/' + event.target.value)
       .then((response) => {
         console.log(response)
         getTasks()
@@ -35,7 +35,7 @@ const handleCreate = (addTask) => {
 
   const handleUpdate = (editTask) => {
     console.log(editTask)
-    axios.put('http://127.0.0.1:8000/api/tasks/' + editTask.id, editTask)
+    axios.put('https://radiant-hollows-59694.herokuapp.com/' + editTask.id, editTask)
       .then((response) => {
         console.log(response)
         getTasks()
