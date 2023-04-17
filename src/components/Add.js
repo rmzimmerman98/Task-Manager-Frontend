@@ -51,12 +51,12 @@ const Add = (props) => {
                     <label className="form-label" htmlFor="notes">Notes</label>
                     <textarea className="form-control" type="text" rows="3" name="notes" value={task.notes} onChange={handleChange}/>
                  </div>
-                
+                <div className="ml-3">
                     <input
                         className="btn btn-primary"
                         type="submit"
                         value="Submit"/>
-               
+                </div>
             </form>
         </div> 
         </>

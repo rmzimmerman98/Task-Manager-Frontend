@@ -47,13 +47,13 @@ const handleCreate = (addTask) => {
 const priorityColor = (priority) => {
   switch (priority) {
     case 'URGENT':
-      return 'border-danger'
+      return 'text-danger border border-4 border-danger'
     case 'DO':
-      return 'border-success'
+      return 'text-success border border-success'
     case 'DEFER':
-      return 'border-warning' 
+      return 'text-warning border bottom border-warning' 
     default:
-      return 'border-success'
+      return 'text-success border border-success'
   }
 }
       
@@ -68,9 +68,9 @@ useEffect(() => {
         <Add handleCreate={handleCreate} />
         {tasks.map((task) => {
           return (
-            <div className={`card bg-light mb-3 ${priorityColor(task.priority)}`} key={task.id}>
+            <div className="card bg-light mb-3" key={task.id}>
               <Edit handleUpdate={handleUpdate} task={task}/>
-                <h4 className='card-header'>{task.name}</h4>
+                <h4 className={`card-header mb-3 ${priorityColor(task.priority)}`}>{task.name}</h4>
                 <div className='card-body'>
                   <h5 className=''>Priority: { task.priority }</h5>
                   <h5 className=''>{task.time_to_complete} minutes to complete</h5>
