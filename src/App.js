@@ -35,7 +35,7 @@ const handleCreate = (addTask) => {
 
   const handleUpdate = (editTask) => {
     console.log(editTask)
-    axios.put('https://radiant-hollows-59694.herokuapp.com/' + editTask.id, editTask)
+    axios.put('https://radiant-hollows-59694.herokuapp.com/api/tasks/' + editTask.id, editTask)
       .then((response) => {
         console.log(response)
         getTasks()
