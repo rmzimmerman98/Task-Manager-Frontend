@@ -74,14 +74,6 @@ useEffect(() => {
                   <h5 className=''>Status: {task.completed_status === 'CP' ? 'Complete' : 'Incomplete'}</h5>
                   <h5 className=''>{task.time_to_complete} minutes to complete</h5>
                   <h5 className=''>Notes: {task.notes}</h5>
-                  {/* <div className='mb-3'>
-                  <input 
-                    type="checkbox" 
-                    id="completed" 
-                    name="completed_status" 
-                    value="COMPLETED" />
-                 <label for="completed_status">Completed</label>
-              </div> */}
                   <div className='footer'>
                   <button className="btn btn-danger" onClick={handleDelete} value={task.id}>Delete</button>
                   </div>
