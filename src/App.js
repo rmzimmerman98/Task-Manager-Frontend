@@ -71,7 +71,6 @@ useEffect(() => {
                 <h4 className="card-header mb-3">{task.name}</h4>
                 <div className='card-body'>
                   <h5 className=''>Priority: { task.priority }</h5>
-                  <h5 className=''>Status: {task.completed_status === 'CP' ? 'Complete' : 'Incomplete'}</h5>
                   <h5 className=''>{task.time_to_complete} minutes to complete</h5>
                   <h5 className=''>Notes: {task.notes}</h5>
                   <div className='footer'>
