@@ -49,7 +49,7 @@ const Add = (props) => {
                 </div>
                 <div className="col-12  mb-3">
                     <label className="form-label" htmlFor="notes">Notes</label>
-                    <textarea className="form-control" type="text" rows="3" name="notes" value={task.notes} onChange={handleChange}/>
+                    <textarea className="form-control" type="text" rows="3" name="notes" required value={task.notes} onChange={handleChange}/>
                  </div>
                 
                     <input
